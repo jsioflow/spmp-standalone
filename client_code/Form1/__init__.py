@@ -17,3 +17,6 @@ class Form1(Form1Template):
     print(f'This is a test to see if this is triggered when a user is attempting to get a password')
     print(f"This user has logged in: {anvil.users.get_user()['email']}")
     #anvil.server.call('say_hello', 'Anvil Developer')
+    self.text_box_3.content = 'test_text'
+    
+
