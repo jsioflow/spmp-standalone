@@ -7,11 +7,12 @@ services:
   client_config: {allow_signup: true, enable_automatically: true, use_email: true,
     confirm_email: false, use_token: false, require_secure_passwords: true}
   server_config: {user_table: users}
+startup: {type: form, module: Settings}
 package_name: SPMP_Standalone
 allow_embedding: false
 name: SPMP_Standalone
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
-startup_form: Form1
+startup_form: null
 db_schema:
   users:
     client: none
