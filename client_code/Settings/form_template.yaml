@@ -102,4 +102,9 @@ components:
   properties: {}
   type: LinearPanel
   layout_properties: {slot: left-nav}
-  components: []
+  components:
+  - name: link_1
+    properties: {text: Home}
+    type: Link
+    layout_properties: {}
+    event_bindings: {click: link_1_click}
