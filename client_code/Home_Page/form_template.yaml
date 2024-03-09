@@ -30,6 +30,7 @@ components:
     properties: {text: Logout}
     type: Link
     layout_properties: {}
+    event_bindings: {click: link_3_click}
 - name: label_1
   properties: {text: Solar Power Management Platform}
   type: Label

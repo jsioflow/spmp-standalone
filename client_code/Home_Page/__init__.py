@@ -7,7 +7,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 
 from ..Settings import Settings
-#from ..Form2 import Form2
+from ..Logout import Logout
 #from ..Form3 import Form3
 
 class Home_Page(Home_PageTemplate):
@@ -31,4 +31,10 @@ class Home_Page(Home_PageTemplate):
     """This method is called when the link is clicked"""
     self.content_panel.clear()
     self.content_panel.add_component(Settings())
+    pass
+
+  def link_3_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    self.content_panel.clear()
+    self.content_panel.add_component(Logout())
     pass
