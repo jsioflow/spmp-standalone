@@ -7,7 +7,7 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 from anvil_extras.utils import timed
 
-from ..Form1 import Settings
+#from ..Form1 import Settings
 #from ..Form2 import Form2
 #from ..Form3 import Form3
 
@@ -21,3 +21,7 @@ class Home_Page(Home_PageTemplate):
     print(f"This user has logged in: {anvil.users.get_user()['email']}")
     #anvil.server.call('say_hello', 'Anvil Developer')
     #self.text_box_3.text = 'test_text'
+
+  def link_1_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    pass
