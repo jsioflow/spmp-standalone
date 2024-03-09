@@ -25,6 +25,7 @@ components:
     properties: {text: Settings}
     type: Link
     layout_properties: {}
+    event_bindings: {click: link_2_click}
   - name: link_3
     properties: {text: Logout}
     type: Link
