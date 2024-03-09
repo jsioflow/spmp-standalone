@@ -11,4 +11,12 @@ class Logout(LogoutTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-    # Any code you write here will run before the form opens.
+  def outlined_button_1_click(self, **event_args):
+    """This method is called when the button is clicked"""
+   # self.label_1.visible = True
+    sleep(3)
+    anvil.users.logout()
+    anvil.users.login_with_form()
+    ## Return to Main Screen if the User logs in again
+    open_form("MainForm")
+    pass
