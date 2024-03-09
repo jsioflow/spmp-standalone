@@ -6,9 +6,7 @@ from anvil.tables import app_tables
 import anvil.server
 import anvil.users
 
-from ..Form1 import Form1
-from ..Form2 import Form2
-from ..Form3 import Form3
+
 
 class Settings(SettingsTemplate):
   def __init__(self, **properties):

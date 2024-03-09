@@ -11,3 +11,24 @@ components:
   properties: {}
   name: navbar_links
   layout_properties: {slot: nav-right}
+- name: linear_panel_1
+  properties: {}
+  type: LinearPanel
+  layout_properties: {slot: left-nav}
+  components:
+  - name: link_1
+    properties: {text: Home}
+    type: Link
+    layout_properties: {}
+  - name: link_2
+    properties: {text: Settings}
+    type: Link
+    layout_properties: {}
+  - name: link_3
+    properties: {text: Logout}
+    type: Link
+    layout_properties: {}
+- name: label_1
+  properties: {text: Solar Power Management Platform}
+  type: Label
+  layout_properties: {slot: title}
