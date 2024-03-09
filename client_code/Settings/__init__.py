@@ -14,7 +14,12 @@ class Settings(SettingsTemplate):
   def link_1_click(self, **event_args):
     """This method is called when the link is clicked"""
     self.content_panel.clear()
-    self.content_panel.add_component(Home_Page())
+    open_form("Home_Page")
+    pass
+
+  def link_2_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    open_form("Logout")
     pass
 
    
