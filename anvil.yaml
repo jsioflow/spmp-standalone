@@ -7,7 +7,7 @@ services:
   client_config: {allow_signup: true, enable_automatically: true, use_email: true,
     confirm_email: false, use_token: false, require_secure_passwords: true}
   server_config: {user_table: users}
-startup: {type: form, module: Settings}
+startup: {type: form, module: Home_Page}
 package_name: SPMP_Standalone
 allow_embedding: false
 name: SPMP_Standalone
