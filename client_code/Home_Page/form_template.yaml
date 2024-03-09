@@ -4,9 +4,58 @@ container:
   properties: {html: '@theme:standard-page.html'}
 components:
 - type: ColumnPanel
-  properties: {}
+  properties: {col_widths: '{"DJQYGB":25,"QTRXHR":20,"RIPJKA":15}'}
   name: content_panel
   layout_properties: {slot: default}
+  components:
+  - name: image_1
+    properties: {source: _/theme/SPGraphic.png}
+    type: Image
+    layout_properties: {grid_position: 'WJZMWC,DJQYGB'}
+  - name: label_3
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'WJZMWC,QTRXHR ZDSICF,FYUPVE'}
+  - name: label_5
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'WJZMWC,QTRXHR QDKOFK,TMCYQP'}
+  - name: label_7
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'WJZMWC,QTRXHR OTHMBI,TNHJHI'}
+  - name: label_8
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'WJZMWC,QTRXHR TYJUCP,XTMXXU'}
+  - name: label_11
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'WJZMWC,QTRXHR OOEBPM,QWAEDQ'}
+  - name: label_4
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'WJZMWC,RIPJKA GKDJZF,LCMYQK'}
+  - name: label_6
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'WJZMWC,RIPJKA MCWJXB,TNCWAI'}
+  - name: label_9
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'WJZMWC,RIPJKA PBEFPN,NRKGUM'}
+  - name: label_10
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'WJZMWC,RIPJKA MKZYGF,PAXWWT'}
+  - name: label_12
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'WJZMWC,RIPJKA LUAPYW,KJJZLG'}
+  - name: label_2
+    properties: {text: 'IOFlow Ltd, 2024', align: right}
+    type: Label
+    layout_properties: {grid_position: 'NRVFDN,TSTKJM'}
 - type: FlowPanel
   properties: {}
   name: navbar_links
