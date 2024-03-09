@@ -5,9 +5,8 @@ import anvil.users
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from anvil_extras.utils import timed
 
-#from ..Form1 import Settings
+from ..Home_Page import Settings
 #from ..Form2 import Form2
 #from ..Form3 import Form3
 
