@@ -12,31 +12,92 @@ components:
     properties: {text: Solar Power Management Platform, bold: true, font_size: 22}
     type: Label
     layout_properties: {grid_position: 'OMAGEF,YMHTTO'}
+  - name: label_9
+    properties: {text: Initial Setup Parameters, spacing_above: medium, align: right,
+      bold: true}
+    type: Label
+    layout_properties: {grid_position: 'OMAGEF,SARLKH'}
   - name: label_3
-    properties: {text: System IP Address}
+    properties: {text: System IP Address, spacing_above: medium, font_size: 12}
     type: Label
     layout_properties: {grid_position: 'GVJSVD,SENSYI ILPIUN,THLBUJ'}
+  - name: text_box_1
+    properties: {font_size: 12}
+    type: TextBox
+    layout_properties: {grid_position: 'GVJSVD,SENSYI ILPIUN,VGBDKD'}
   - name: label_5
-    properties: {text: System Collection Name}
+    properties: {text: Customer ID, spacing_above: medium, font_size: 12}
     type: Label
     layout_properties: {grid_position: 'GVJSVD,SENSYI DHDXBI,BEVTEM'}
-  - name: label_7
-    properties: {text: Customer Report Email Address}
-    type: Label
-    layout_properties: {grid_position: 'GVJSVD,SENSYI LZMVWB,IMWBTB'}
-  - name: text_box_1
-    properties: {}
-    type: TextBox
-    layout_properties: {grid_position: 'GVJSVD,RKOWSM FVJQVF,UIIBHV'}
   - name: text_box_2
-    properties: {}
+    properties: {font_size: 12}
     type: TextBox
-    layout_properties: {grid_position: 'GVJSVD,RKOWSM ATPUVY,SHWCMW'}
+    layout_properties: {grid_position: 'GVJSVD,SENSYI DHDXBI,NJXART'}
+  - name: label_7
+    properties: {text: Battery kW Capacity, spacing_above: medium, font_size: 12}
+    type: Label
+    layout_properties: {grid_position: 'GVJSVD,SENSYI LZMVWB,IMWBTB YBMGKG,FBNMPQ'}
+  - name: label_13
+    properties: {text: Battery Max %, spacing_above: medium, font_size: 12}
+    type: Label
+    layout_properties: {grid_position: 'GVJSVD,SENSYI LZMVWB,IMWBTB NLCVNW,AGNEOH'}
+  - name: label_10
+    properties: {text: Max Charging Rate, spacing_above: medium, font_size: 12}
+    type: Label
+    layout_properties: {grid_position: 'GVJSVD,SENSYI LZMVWB,IMWBTB VTJOXX,MFSFMR'}
   - name: text_box_3
-    properties: {}
+    properties: {font_size: 12}
     type: TextBox
-    layout_properties: {grid_position: 'GVJSVD,RKOWSM FQVFYU,QGODGQ'}
+    layout_properties: {grid_position: 'GVJSVD,SENSYI LZMVWB,VLPXFJ HVWLKF,CXSXTV'}
     data_bindings: []
+  - name: text_box_7
+    properties: {font_size: 12}
+    type: TextBox
+    layout_properties: {grid_position: 'GVJSVD,SENSYI LZMVWB,VLPXFJ SHLYYK,DTEUHF'}
+  - name: text_box_10
+    properties: {font_size: 12}
+    type: TextBox
+    layout_properties: {grid_position: 'GVJSVD,SENSYI LZMVWB,VLPXFJ DJTYTF,UORVKW'}
+  - name: label_4
+    properties: {text: Location Region, spacing_above: medium, font_size: 12}
+    type: Label
+    layout_properties: {grid_position: 'GVJSVD,RKOWSM FVJQVF,CWJABV'}
+  - name: text_box_4
+    properties: {font_size: 12}
+    type: TextBox
+    layout_properties: {grid_position: 'GVJSVD,RKOWSM FVJQVF,MWBSUM'}
+  - name: label_6
+    properties: {text: Location Name, spacing_above: medium, font_size: 12}
+    type: Label
+    layout_properties: {grid_position: 'GVJSVD,RKOWSM ATPUVY,ADBHFN'}
+  - name: text_box_5
+    properties: {font_size: 12}
+    type: TextBox
+    layout_properties: {grid_position: 'GVJSVD,RKOWSM ATPUVY,STOIVM'}
+  - name: label_8
+    properties: {text: Timezone, spacing_above: medium, font_size: 12}
+    type: Label
+    layout_properties: {grid_position: 'GVJSVD,RKOWSM FQVFYU,GWALPO UFVVBL,AZSBME'}
+  - name: label_11
+    properties: {text: Latitude, spacing_above: medium, font_size: 12}
+    type: Label
+    layout_properties: {grid_position: 'GVJSVD,RKOWSM FQVFYU,GWALPO SSNILZ,GYTQIT'}
+  - name: label_12
+    properties: {text: Longitude, spacing_above: medium, font_size: 12}
+    type: Label
+    layout_properties: {grid_position: 'GVJSVD,RKOWSM FQVFYU,GWALPO VQPDGJ,SAATLF'}
+  - name: text_box_6
+    properties: {font_size: 12}
+    type: TextBox
+    layout_properties: {grid_position: 'GVJSVD,RKOWSM FQVFYU,MPXJLN QAMXWW,GLEOAA'}
+  - name: text_box_8
+    properties: {font_size: 12}
+    type: TextBox
+    layout_properties: {grid_position: 'GVJSVD,RKOWSM FQVFYU,MPXJLN FWKQBQ,NQDEIU'}
+  - name: text_box_9
+    properties: {font_size: 12}
+    type: TextBox
+    layout_properties: {grid_position: 'GVJSVD,RKOWSM FQVFYU,MPXJLN URCUGF,NECOKI'}
 - type: FlowPanel
   properties: {}
   name: navbar_links
@@ -45,6 +106,13 @@ components:
   properties: {}
   type: LinearPanel
   layout_properties: {slot: left-nav}
+  components:
+  - name: link_1
+    properties: {}
+    type: Link
+  - name: link_2
+    properties: {}
+    type: Link
 - name: label_1
   properties: {text: Menu Options}
   type: Label
