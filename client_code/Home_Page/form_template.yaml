@@ -52,6 +52,7 @@ components:
     properties: {}
     type: Label
     layout_properties: {grid_position: 'WJZMWC,RIPJKA LUAPYW,KJJZLG'}
+    data_bindings: []
   - name: label_2
     properties: {text: 'IOFlow Ltd, 2024', align: right}
     type: Label
