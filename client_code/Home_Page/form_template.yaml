@@ -13,23 +13,23 @@ components:
     type: Image
     layout_properties: {grid_position: 'WJZMWC,DJQYGB'}
   - name: label_3
-    properties: {}
+    properties: {text: Total Savings v Base Plan}
     type: Label
     layout_properties: {grid_position: 'WJZMWC,QTRXHR ZDSICF,FYUPVE'}
   - name: label_5
-    properties: {}
+    properties: {text: Total Savings v Chosen Plan}
     type: Label
     layout_properties: {grid_position: 'WJZMWC,QTRXHR QDKOFK,TMCYQP'}
   - name: label_7
-    properties: {}
+    properties: {text: Total Solar Power Generated in kWh}
     type: Label
     layout_properties: {grid_position: 'WJZMWC,QTRXHR OTHMBI,TNHJHI'}
   - name: label_8
-    properties: {}
+    properties: {text: Total House Consumption in kWh}
     type: Label
     layout_properties: {grid_position: 'WJZMWC,QTRXHR TYJUCP,XTMXXU'}
   - name: label_11
-    properties: {}
+    properties: {text: Total Carbon Dioxide Savings in Kg}
     type: Label
     layout_properties: {grid_position: 'WJZMWC,QTRXHR OOEBPM,QWAEDQ'}
   - name: label_4
