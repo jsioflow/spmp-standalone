@@ -32,11 +32,11 @@ components:
   layout_properties: {slot: left-nav}
   components:
   - name: link_1
-    properties: {text: Home}
+    properties: {text: Home, icon: 'fa:home'}
     type: Link
     layout_properties: {}
   - name: link_2
-    properties: {text: Settings}
+    properties: {text: Settings, icon: 'fa:gear'}
     type: Link
     layout_properties: {}
     event_bindings: {click: link_2_click}

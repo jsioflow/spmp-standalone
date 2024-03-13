@@ -4,12 +4,20 @@ container:
   properties: {html: '@theme:standard-page.html'}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"DJQYGB":25,"QTRXHR":20,"RIPJKA":15}'}
+  properties: {col_widths: '{"DJQYGB":25,"QTRXHR":20,"RIPJKA":15,"WPXJME":25,"EBPGDN":35}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
+  - name: label_13
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'FXTXZB,WPXJME'}
+  - name: label_14
+    properties: {icon: '', align: center}
+    type: Label
+    layout_properties: {grid_position: 'FXTXZB,EBPGDN'}
   - name: image_1
-    properties: {source: _/theme/SPGraphic.png, height: 272}
+    properties: {source: _/theme/SPGraphic.png, height: 209}
     type: Image
     layout_properties: {grid_position: 'WJZMWC,DJQYGB'}
   - name: label_3
@@ -67,17 +75,17 @@ components:
   layout_properties: {slot: left-nav}
   components:
   - name: link_1
-    properties: {text: Home}
+    properties: {text: Home, icon: 'fa:home'}
     type: Link
     layout_properties: {}
     event_bindings: {click: link_1_click}
   - name: link_2
-    properties: {text: Settings}
+    properties: {text: Settings, icon: 'fa:gear'}
     type: Link
     layout_properties: {}
     event_bindings: {click: link_2_click}
   - name: link_3
-    properties: {text: Logout}
+    properties: {text: Logout, icon: 'fa:sign-out', bold: false}
     type: Link
     layout_properties: {}
     event_bindings: {click: link_3_click}
