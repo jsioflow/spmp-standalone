@@ -9,7 +9,7 @@ components:
   layout_properties: {slot: default}
   components:
   - name: image_1
-    properties: {source: _/theme/SPGraphic.png}
+    properties: {source: _/theme/SPGraphic.png, height: 272}
     type: Image
     layout_properties: {grid_position: 'WJZMWC,DJQYGB'}
   - name: label_3

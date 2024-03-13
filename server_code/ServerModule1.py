@@ -3,9 +3,12 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.users
 import anvil.server
+import time
+from datetime import date, datetime, timedelta, timezone
 import os
 import csv
 import sqlite3
+import pandas as pd
 
 
 def read_csv_to_dict(file_path):
@@ -52,32 +55,30 @@ def record_parameter(dict, parameter, value):
     dict[parameter] = value
     print(f"Parameter '{parameter}' with value '{value}' recorded successfully.")
 
-# This is a server module. It runs on the Anvil server,
-# rather than in the user's browser.
-#
-# To allow anvil.server.call() to call functions here, we mark
-# them with @anvil.server.callable.
-# Here is an example - you can replace it with your own:
-#
-# Defined definitions
+# Parameter definitions
+configuration_file = 'Desktop/SPMP/Database/config_parameters.csv'
+configuration = read_csv_to_dict(configuration_file)
+customer_id = pick_parameter_value(configuration, 'customer_id')
 
-parameter_dict = {}
+current_day = date.today().strftime('%Y-%m-%d')
+current_time = time.strftime('%H:%M:%S')
 
 @anvil.server.callable
-def say_hello(name):
-  print("Hello, " + name + "!")
-  print
-  
-@anvil.server.callable
-def get_config_parameter(test_parameter):
+def get_config_file():
   new_directory = 'Desktop/SPMP/Database'
   os.chdir(new_directory)  
   configuration = read_csv_to_dict('config_parameters.csv')
-  value = pick_parameter_value(configuration, test_parameter)
-  return value
+  return configuration
 
 @anvil.server.callable
 def save_configuration(parameter_dict):
   new_directory = 'Desktop/SPMP/Database'
   os.chdir(new_directory)
   write_dict_to_csv('config_parameters.csv',parameter_dict)
+  
+@anvil.server.callable
+def get_aggregate_file():
+  new_directory = 'Desktop/SPMP/Daily_Reports/Summaries'
+  os.chdir(new_directory)  
+  aggregate_data = read_csv_to_dict(f'daily_aggregate_{customer_id}_{current_day}.csv')
+  return aggregate_data

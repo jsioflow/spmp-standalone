@@ -8,18 +8,24 @@ from anvil.tables import app_tables
 
 from ..Settings import Settings
 from ..Logout import Logout
-#from ..Form3 import Form3
 
 class Home_Page(Home_PageTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    # Any code you write here will run when the form opens.
     anvil.users.login_with_form()
-    print(f'This is a test to see if this is triggered when a user is attempting to get a password')
-    print(f"This user has logged in: {anvil.users.get_user()['email']}")
-    #anvil.server.call('say_hello', 'Anvil Developer')
-    #self.text_box_3.text = 'test_text'
+#   print(f"This user has logged in: {anvil.users.get_user()['email']}")
+    aggregate_data = anvil.server.call('get_aggregate_file')
+    result1 = aggregate_data.get('Savings_from_Base_Plan')
+    self.label_4.text = (f'€{result1}')
+    result2 = aggregate_data.get('Savings_from_Chosen_Plan_with_SPMP')
+    self.label_6.text = (f'€{result2}')
+    result3 = aggregate_data.get('SP_kWh')
+    self.label_9.text = (f'{result3} kWh')
+    result4 = aggregate_data.get('Home_kWh')
+    self.label_10.text = (f'{result4} kWh')
+    result5 = aggregate_data.get('Kg_CO2')
+    self.label_12.text = (f'{result5} Kg CO2')
 
   def link_1_click(self, **event_args):
     """This method is called when the link is clicked"""
