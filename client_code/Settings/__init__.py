@@ -49,6 +49,8 @@ class Settings(SettingsTemplate):
     self.text_box_14.text = config_file.get('home_kWh_default')
     self.text_box_15.text = config_file.get('resource_id')
     self.text_box_16.text = config_file.get("api_key")
+    self.text_box_17.text = config_file.get("timer")
+    self.text_box_18.text = config_file.get("co2")
     pass
 
   def outlined_button_2_click(self, **event_args):
@@ -70,6 +72,8 @@ class Settings(SettingsTemplate):
     record_parameter(parameter_dict, "home_kWh_default", self.text_box_14.text)
     record_parameter(parameter_dict, "resource_id", self.text_box_15.text)
     record_parameter(parameter_dict, "api_key", self.text_box_16.text)
+    record_parameter(parameter_dict, "timer", self.text_box_17.text)
+    record_parameter(parameter_dict, "co2", self.text_box_18.text)
     display_parameters(parameter_dict)
     anvil.server.call('save_configuration', parameter_dict)
     pass
