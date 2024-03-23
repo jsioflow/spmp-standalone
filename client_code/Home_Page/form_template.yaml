@@ -30,7 +30,7 @@ components:
     type: Label
     layout_properties: {grid_position: 'WJZMWC,DJQYGB ZHAQWE,NCQBEC JRGPPA,YZZDTD'}
   - name: label_13
-    properties: {text: 'Summary, Date Range'}
+    properties: {text: Date Range}
     type: Label
     layout_properties: {grid_position: 'WJZMWC,QTRXHR YFSYPK,XWLQDG'}
   - name: label_14
