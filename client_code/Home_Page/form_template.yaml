@@ -4,7 +4,8 @@ container:
   properties: {html: '@theme:standard-page.html'}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"DJQYGB":30,"QTRXHR":20,"RIPJKA":10}'}
+  properties: {col_widths: '{"DJQYGB":30,"QTRXHR":20,"RIPJKA":10}', spacing_above: small,
+    spacing_below: small}
   name: content_panel
   layout_properties: {slot: default}
   components:
@@ -15,11 +16,31 @@ components:
   - name: label_17
     properties: {font_size: 14, text: Solar Panel Power Output}
     type: Label
-    layout_properties: {grid_position: 'WJZMWC,DJQYGB ZHAQWE,BUNXWG'}
+    layout_properties: {grid_position: 'WJZMWC,DJQYGB ZHAQWE,BUNXWG GQUIHL,KERZPF'}
+  - name: label_15
+    properties: {text: Battery Charge Level, font_size: 14, spacing_above: small}
+    type: Label
+    layout_properties: {grid_position: 'WJZMWC,DJQYGB ZHAQWE,BUNXWG FRAOWY,MNCNWW'}
   - name: label_18
     properties: {font_size: 14}
     type: Label
-    layout_properties: {grid_position: 'WJZMWC,DJQYGB ZHAQWE,NCQBEC'}
+    layout_properties: {grid_position: 'WJZMWC,DJQYGB ZHAQWE,NCQBEC OOYMSA,UXJSTZ'}
+  - name: label_16
+    properties: {font_size: 14}
+    type: Label
+    layout_properties: {grid_position: 'WJZMWC,DJQYGB ZHAQWE,NCQBEC JRGPPA,YZZDTD'}
+  - name: label_13
+    properties: {text: 'Summary, Date Range'}
+    type: Label
+    layout_properties: {grid_position: 'WJZMWC,QTRXHR YFSYPK,XWLQDG'}
+  - name: label_14
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'WJZMWC,QTRXHR YFSYPK,EUPMNC'}
+  - name: spacer_1
+    properties: {height: '8'}
+    type: Spacer
+    layout_properties: {grid_position: 'WJZMWC,QTRXHR HWNVRS,YLYGFF'}
   - name: label_3
     properties: {text: Total Savings v Base Plan, font_size: 14}
     type: Label
@@ -40,10 +61,14 @@ components:
     properties: {text: Total Carbon Dioxide Savings in Kg, font_size: 14}
     type: Label
     layout_properties: {grid_position: 'WJZMWC,QTRXHR OOEBPM,QWAEDQ'}
-  - name: label_15
-    properties: {text: Battery Charge Level, font_size: 14, spacing_above: small}
+  - name: label_19
+    properties: {}
     type: Label
-    layout_properties: {grid_position: 'WJZMWC,QTRXHR YRZTWF,XSJAKM'}
+    layout_properties: {grid_position: 'WJZMWC,RIPJKA IQRNGQ,JCRNNZ'}
+  - name: spacer_2
+    properties: {height: '8'}
+    type: Spacer
+    layout_properties: {grid_position: 'WJZMWC,RIPJKA BPBVVJ,QZRYHL'}
   - name: label_4
     properties: {font_size: 14}
     type: Label
@@ -65,14 +90,10 @@ components:
     type: Label
     layout_properties: {grid_position: 'WJZMWC,RIPJKA LUAPYW,KJJZLG'}
     data_bindings: []
-  - name: label_16
-    properties: {font_size: 14}
-    type: Label
-    layout_properties: {grid_position: 'WJZMWC,RIPJKA VPPLBK,SCHBAP'}
   - name: label_2
-    properties: {text: 'IOFlow Ltd, 2024', align: right, font_size: 9}
+    properties: {text: 'IOFlow Ltd, 2024', align: right, font_size: 9, italic: false}
     type: Label
-    layout_properties: {grid_position: 'NRVFDN,TSTKJM'}
+    layout_properties: {grid_position: 'VPHOUN,DMBQEY'}
 - type: FlowPanel
   properties: {}
   name: navbar_links
