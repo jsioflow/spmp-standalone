@@ -43,8 +43,12 @@ class Settings(SettingsTemplate):
     self.text_box_8.text = config_file.get('latitude')
     self.text_box_9.text = config_file.get('longitude')
     self.text_box_10.text = config_file.get('max_charge_w')
+    self.text_box_11.text = config_file.get('forecast_source')
     self.text_box_12.text = config_file.get('sp_kWh_default')
+    self.text_box_13.text = config_file.get('host')
     self.text_box_14.text = config_file.get('home_kWh_default')
+    self.text_box_15.text = config_file.get('resource_id')
+    self.text_box_16.text = config_file.get("api_key")
     pass
 
   def outlined_button_2_click(self, **event_args):
@@ -60,8 +64,12 @@ class Settings(SettingsTemplate):
     record_parameter(parameter_dict, "latitude", self.text_box_8.text)
     record_parameter(parameter_dict, "longitude", self.text_box_9.text)
     record_parameter(parameter_dict, "max_charge_w", self.text_box_10.text)
+    record_parameter(parameter_dict, "forecast_source", self.text_box_11.text)
     record_parameter(parameter_dict, "sp_kWh_default", self.text_box_12.text)
+    record_parameter(parameter_dict, "host", self.text_box_13.text)
     record_parameter(parameter_dict, "home_kWh_default", self.text_box_14.text)
+    record_parameter(parameter_dict, "resource_id", self.text_box_15.text)
+    record_parameter(parameter_dict, "api_key", self.text_box_16.text)
     display_parameters(parameter_dict)
     anvil.server.call('save_configuration', parameter_dict)
     pass
