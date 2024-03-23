@@ -14,11 +14,12 @@ components:
     type: Image
     layout_properties: {grid_position: 'WJZMWC,DJQYGB WNMJTP,XVAOYE'}
   - name: label_17
-    properties: {font_size: 14, text: Solar Panel Power Output}
+    properties: {font_size: 14, text: Solar Panel Power Output, icon: 'fa:sun-o'}
     type: Label
     layout_properties: {grid_position: 'WJZMWC,DJQYGB ZHAQWE,BUNXWG GQUIHL,KERZPF'}
   - name: label_15
-    properties: {text: Battery Charge Level, font_size: 14, spacing_above: small}
+    properties: {text: Battery Charge Level, font_size: 14, spacing_above: small,
+      icon: 'fa:battery'}
     type: Label
     layout_properties: {grid_position: 'WJZMWC,DJQYGB ZHAQWE,BUNXWG FRAOWY,MNCNWW'}
   - name: label_18
@@ -30,7 +31,7 @@ components:
     type: Label
     layout_properties: {grid_position: 'WJZMWC,DJQYGB ZHAQWE,NCQBEC JRGPPA,YZZDTD'}
   - name: label_13
-    properties: {text: Date Range}
+    properties: {text: Date Range, icon: 'fa:calendar-o'}
     type: Label
     layout_properties: {grid_position: 'WJZMWC,QTRXHR YFSYPK,XWLQDG'}
   - name: label_14
