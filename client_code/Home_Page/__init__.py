@@ -26,6 +26,10 @@ class Home_Page(Home_PageTemplate):
     self.label_10.text = (f'{result4} kWh')
     result5 = aggregate_data.get('Kg_CO2')
     self.label_12.text = (f'{result5} Kg CO2')
+    result6 = aggregate_data.get('Start_Date')
+    self.label_14.text = (f'{result6}')
+    result7 = aggregate_data.get('End_Date')
+    self.label_19.text = (f'{result7}')
 
   def link_1_click(self, **event_args):
     """This method is called when the link is clicked"""
