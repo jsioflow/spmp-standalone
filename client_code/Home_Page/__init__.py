@@ -30,6 +30,22 @@ class Home_Page(Home_PageTemplate):
     self.label_14.text = (f'{result6}')
     result7 = aggregate_data.get('End_Date')
     self.label_19.text = (f'{result7}')
+    solar_data = anvil.server.call('get_solar_power')
+    self.label_18.text = (f'{solar_data} Watts')
+
+    # Battery Level Section
+    battery_data = anvil.server.call('get_battery_level')
+    self.label_16.text = (f'{battery_data} %')
+    if 1 < battery_data < 25:
+        self.label_15.icon = 'fa:battery-1'
+    if 25 < battery_data < 50:
+        self.label_15.icon = 'fa:battery-2'
+    if 50 < battery_data < 75:
+        self.label_15.icon = 'fa:battery-3'
+    if 75 < battery_data < 100:
+        self.label_15.icon = 'fa:battery-4'
+    if battery_data == 0:
+        self.label_15.icon = 'fa:battery-empty' 
 
   def link_1_click(self, **event_args):
     """This method is called when the link is clicked"""
