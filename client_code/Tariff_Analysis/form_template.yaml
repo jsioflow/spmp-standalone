@@ -31,10 +31,14 @@ components:
     type: DropDown
     layout_properties: {grid_position: 'WXVVKO,SNPEOB'}
     event_bindings: {change: drop_down_2_change}
-  - name: label_4
+  - name: rich_text_1
     properties: {}
-    type: Label
-    layout_properties: {grid_position: 'ADYXZM,UXULEB'}
+    type: RichText
+    layout_properties: {grid_position: 'LDYRVI,IADFAH'}
+  - name: rich_text_2
+    properties: {}
+    type: RichText
+    layout_properties: {grid_position: 'FNBYBE,SAWHSY'}
 - type: FlowPanel
   properties: {}
   name: navbar_links
