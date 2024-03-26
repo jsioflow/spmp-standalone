@@ -30,9 +30,6 @@ class Tariff_Analysis(Tariff_AnalysisTemplate):
 
   def outlined_button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
-    #self.rich_text_1.font_size = 24
-    #self.rich_text_1.foreground = "#16d02b"
-    #self.rich_text_1.visible = True
     self.rich_text_1.content = anvil.server.call('get_tariff_analysis')
     pass
 
