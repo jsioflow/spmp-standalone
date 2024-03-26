@@ -9,6 +9,7 @@ import os
 import csv
 import sqlite3
 import pandas as pd
+import numpy as np
 
 
 def read_csv_to_dict(file_path):
@@ -74,6 +75,48 @@ def get_last_entry_as_dataframe(database, table_name):
     finally:
         # Close the connection
         connection.close()
+        
+def read_table_into_dataframe(db_file, table_name):
+    # Connect to SQLite database
+    conn = sqlite3.connect(db_file)
+
+    # Build SQL query to select all rows from the specified table
+    select_query = f"SELECT * FROM {table_name}"
+
+    # Execute the query and fetch the results as a DataFrame
+    dataframe = pd.read_sql_query(select_query, conn)
+
+    # Close the connection
+    conn.close()
+
+    return dataframe
+    
+def get_after_last_space(input_string):
+    # Find the index of the last space in the string
+    last_space_index = input_string.rfind(' ')
+
+    # Check if a space is found in the string
+    if last_space_index != -1:
+        # Extract characters after the last space
+        result_string = input_string[last_space_index + 1:]
+        return result_string
+    else:
+        # If no space is found, return an empty string
+        return ""
+    
+def get_before_last_space(input_string):
+    # Find the index of the last space in the string
+    last_space_index = input_string.rfind(' ')
+
+    # Check if a space is found in the string
+    if last_space_index != -1:
+        # Extract characters before the last space
+        result_string = input_string[:last_space_index]
+        return result_string
+    else:
+        # If no space is found, return the original string
+        return input_string
+    
 # Parameter definitions
 configuration_file = 'Desktop/SPMP/Database/config_parameters.csv'
 configuration = read_csv_to_dict(configuration_file)
@@ -117,3 +160,102 @@ def get_battery_level():
     df_battery_level = get_last_entry_as_dataframe('solarplatform.db', 'myspm')
     battery_level = df_battery_level.loc[0,'SP_Battery_Percent']
     return battery_level
+    
+@anvil.server.callable
+def get_tariff_analysis():
+    new_directory = 'Desktop/SPMP/Tariffs'
+    os.chdir(new_directory)
+    # Read tariff information from CSV files
+    df_tariffs = pd.read_csv('utility_plans.csv')
+    
+    os.chdir("..")
+    new_directory = 'Database'
+    os.chdir(new_directory)
+    hourly_database = 'solarplatformhourly.db'
+    hourly_table = 'mysphourly'
+    hourly_table = read_table_into_dataframe(hourly_database, hourly_table)
+    
+    # Count the number of rows per date and filter out those with counts < 24
+    filtered_dates = hourly_table.groupby('Date').filter(lambda x: len(x) >= 24)
+
+    # Reset the index of df2
+    filtered_dates = filtered_dates.reset_index(drop=True)
+    dfChargeMatrix = filtered_dates
+    
+    #Time Label on Completion
+    current_time = time.strftime('%H:%M:%S')
+
+    list1 = []
+    list2 = []
+
+    # Read list of Tariff options form file and populate the Charge Matrix
+    for column in df_tariffs.columns:
+        list1.append(column)
+
+    for x in range (0, len(dfChargeMatrix)):
+        dfChargeMatrix.loc[x,'Hour'] = str(dfChargeMatrix.loc[x,'Hour'])
+
+    # Iterate over Tariff options and update Charge Matrix based on matching rows in dfTariffs
+    for tariffoption in list1[2:]:
+        # Check if the tariff option exists as a column in dfTariffs
+        if tariffoption in df_tariffs.columns:
+            # Iterate over the rows in dfChargeMatrix
+            for x in range(len(dfChargeMatrix)):
+                # Find the corresponding row in dfTariffs based on 'Hours' and 'Day' columns
+                matching_rows = df_tariffs[(df_tariffs['Hours'] == dfChargeMatrix.loc[x, 'Hour']) & (df_tariffs['Day'] == dfChargeMatrix.loc[x, 'Day'])]
+                
+                # Check if matching rows are found
+                if not matching_rows.empty:
+                    # Extract the tariff rate and update dfChargeMatrix
+                    rate = matching_rows.iloc[0][tariffoption]
+                    dfChargeMatrix.at[x, tariffoption + '_Rate'] = rate
+
+    # Drop unnecessary columns from dfChargeMatrix
+    dfChargeMatrix = dfChargeMatrix.drop(['Day'], axis=1)
+
+    # Iterate over the remaining tariffs in the list
+    for tariffoption in list1[2:]:
+        # Calculate the tariff cost and update dfChargeMatrix
+        dfChargeMatrix[tariffoption] = (dfChargeMatrix['Grid_Buy_kWh'] * dfChargeMatrix[tariffoption + '_Rate']) / 100
+
+    # Day Count for Summary Statement
+    daysevaluated = np.floor(x/24)
+
+    ## Reformat the Charge Matrix ##
+    df_summary = pd.DataFrame(columns=['Tariff Plan','Total Cost'])
+
+    # Iterate over Tariff options and calculate total cost
+    list1 = list1[2:]
+    for l in range (len(list1)):
+        tariffoption = (list1[l])
+        df_summary.loc[l,'Tariff Plan'] = tariffoption
+        df_summary.loc[l,'Total Cost'] = round((dfChargeMatrix[tariffoption].sum()),2)
+
+    # Sort the summary DataFrame by total cost
+    df_summary = df_summary.sort_values(['Total Cost'])
+
+    # Format total cost as euros
+    for x in range(0, len(df_summary)):
+        df_summary.loc[x,'Total Cost'] = '€'+str(df_summary.loc[x,'Total Cost'])
+
+    # Add the total number of days evaluated to the summary DataFrame
+    df_summary.loc[x+2,'Tariff Plan'] = 'Total Number of days Evaluated'
+    df_summary.loc[x+2,'Total Cost'] = str(daysevaluated) + ' Days'
+
+    # Reset the index of dfSummary
+    df_summary = df_summary.reset_index(inplace=False)
+    del df_summary['index']
+    # Resetting index starting at 1
+    df_summary.reset_index(drop=True, inplace=True)
+    df_summary.index += 1
+
+    #global winner
+    winner = df_summary.iloc[[0]].to_string(header=False, index=False)
+    best_tariff = get_before_last_space(winner)
+    best_cost = get_after_last_space(winner)
+
+    winner = (f'The Best Tariff is the "{best_tariff}" at a Cost of {best_cost}')
+    #print(winner)
+    #print(df_summary)
+    #print("Transaction Completed at: ",current_time)
+    return winner
