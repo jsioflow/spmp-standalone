@@ -9,14 +9,17 @@ components:
   layout_properties: {slot: default}
   components:
   - name: label_2
-    properties: {text: 'Thanks for configuring and viewing the SPMP, come back soon.',
-      align: center}
+    properties: {text: Tariff Analysis}
     type: Label
-    layout_properties: {grid_position: 'ELUMOR,ZWRFBL'}
+    layout_properties: {grid_position: 'MXSSVB,MFORTL'}
+  - name: label_3
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'NEBKXD,ZJWSZK'}
   - name: outlined_button_1
-    properties: {text: Logout, role: outlined-button}
+    properties: {text: Tariff_Analysis, role: outlined-button}
     type: Button
-    layout_properties: {grid_position: 'ITUVFN,QDZETT'}
+    layout_properties: {grid_position: 'STBEFE,MVKNUT'}
     event_bindings: {click: outlined_button_1_click}
 - type: FlowPanel
   properties: {}
@@ -34,14 +37,15 @@ components:
   - name: link_1
     properties: {text: Home, icon: 'fa:home'}
     type: Link
+    event_bindings: {click: link_1_click}
     layout_properties: {}
-  - name: link_3
-    properties: {text: Tariff Analysis, icon: 'fa:balance-scale'}
-    type: Link
-    layout_properties: {}
-    event_bindings: {click: link_3_click}
   - name: link_2
     properties: {text: Settings, icon: 'fa:gear'}
     type: Link
-    layout_properties: {}
     event_bindings: {click: link_2_click}
+    layout_properties: {}
+  - name: link_3
+    properties: {text: Logout, icon: 'fa:sign-out'}
+    type: Link
+    event_bindings: {click: link_3_click}
+    layout_properties: {}

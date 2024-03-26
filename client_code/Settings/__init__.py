@@ -78,6 +78,11 @@ class Settings(SettingsTemplate):
     anvil.server.call('save_configuration', parameter_dict)
     pass
 
+  def link_3_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    open_form("Tariff_Analysis")
+    pass
+
    
     
 

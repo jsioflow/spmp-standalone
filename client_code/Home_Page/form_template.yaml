@@ -123,6 +123,11 @@ components:
     type: Link
     layout_properties: {}
     event_bindings: {click: link_2_click}
+  - name: link_4
+    properties: {text: Tariff Analysis, icon: 'fa:balance-scale'}
+    type: Link
+    layout_properties: {}
+    event_bindings: {click: link_4_click}
   - name: link_3
     properties: {text: Logout, icon: 'fa:sign-out', bold: false}
     type: Link

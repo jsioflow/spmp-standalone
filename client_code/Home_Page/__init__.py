@@ -64,3 +64,8 @@ class Home_Page(Home_PageTemplate):
     self.content_panel.clear()
     self.content_panel.add_component(Logout())
     pass
+
+  def link_4_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    open_form("Tariff_Analysis")
+    pass
