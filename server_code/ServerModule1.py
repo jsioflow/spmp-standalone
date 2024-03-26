@@ -55,6 +55,25 @@ def record_parameter(dict, parameter, value):
     dict[parameter] = value
     print(f"Parameter '{parameter}' with value '{value}' recorded successfully.")
 
+# Get last line in data base and return as dataframe
+def get_last_entry_as_dataframe(database, table_name):
+
+    connection = sqlite3.connect(database)
+    query = f"SELECT * FROM {table_name} ORDER BY ROWID DESC LIMIT 1"
+
+    try:
+        # Use pandas to read the result into a DataFrame
+        last_entry_df = pd.read_sql_query(query, connection)
+
+        return last_entry_df if not last_entry_df.empty else None
+
+    except sqlite3.Error as e:
+        print(f"Error: {e}")
+        return None
+
+    finally:
+        # Close the connection
+        connection.close()
 # Parameter definitions
 configuration_file = 'Desktop/SPMP/Database/config_parameters.csv'
 configuration = read_csv_to_dict(configuration_file)
@@ -82,3 +101,19 @@ def get_aggregate_file():
   os.chdir(new_directory)  
   aggregate_data = read_csv_to_dict(f'daily_aggregate_{customer_id}_{current_day}.csv')
   return aggregate_data
+
+@anvil.server.callable
+def get_solar_power():
+    new_directory = 'Desktop/SPMP/Database'
+    os.chdir(new_directory)
+    df_solar_power = get_last_entry_as_dataframe('solarplatform.db', 'myspm')
+    solar_power = df_solar_power.loc[0,'SP_Watt']
+    return solar_power
+
+@anvil.server.callable
+def get_battery_level():
+    new_directory = 'Desktop/SPMP/Database'
+    os.chdir(new_directory)
+    df_battery_level = get_last_entry_as_dataframe('solarplatform.db', 'myspm')
+    battery_level = df_battery_level.loc[0,'SP_Battery_Percent']
+    return battery_level

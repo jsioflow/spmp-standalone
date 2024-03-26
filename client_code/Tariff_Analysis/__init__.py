@@ -31,3 +31,11 @@ class Tariff_Analysis(Tariff_AnalysisTemplate):
   def outlined_button_1_click(self, **event_args):
     """This method is called when the button is clicked"""
     pass
+
+  def drop_down_1_change(self, **event_args):
+    """This method is called when an item is selected"""
+    pass
+
+  def drop_down_2_change(self, **event_args):
+    """This method is called when an item is selected"""
+    pass
