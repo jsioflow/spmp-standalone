@@ -69,3 +69,7 @@ class Home_Page(Home_PageTemplate):
     """This method is called when the link is clicked"""
     open_form("Tariff_Analysis")
     pass
+
+  def timer_1_tick(self, **event_args):
+    """This method is called Every [interval] seconds. Does not trigger if [interval] is 0."""
+    pass
