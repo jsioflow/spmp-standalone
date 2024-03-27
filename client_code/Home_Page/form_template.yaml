@@ -122,9 +122,10 @@ components:
   layout_properties: {slot: nav-right}
   components:
   - name: timer_1
-    properties: {}
+    properties: {interval: 30}
     type: Timer
     event_bindings: {tick: timer_1_tick}
+    layout_properties: {}
 - name: linear_panel_1
   properties: {}
   type: LinearPanel

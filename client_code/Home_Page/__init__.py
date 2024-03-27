@@ -47,6 +47,10 @@ class Home_Page(Home_PageTemplate):
     if battery_data == 0:
         self.label_15.icon = 'fa:battery-empty' 
 
+    # Home Power Usage
+    home_usage = anvil.server.call('get_home_usage')
+    self.label_22.text = (f'{home_usage} Watts')
+    
   def link_1_click(self, **event_args):
     """This method is called when the link is clicked"""
     self.content_panel.clear()
@@ -72,4 +76,24 @@ class Home_Page(Home_PageTemplate):
 
   def timer_1_tick(self, **event_args):
     """This method is called Every [interval] seconds. Does not trigger if [interval] is 0."""
+    solar_data = anvil.server.call('get_solar_power')
+    self.label_18.text = (f'{solar_data} Watts')
+
+    # Battery Level Section
+    battery_data = anvil.server.call('get_battery_level')
+    self.label_16.text = (f'{battery_data} %')
+    if 1 < battery_data < 25:
+        self.label_15.icon = 'fa:battery-1'
+    if 25 < battery_data < 50:
+        self.label_15.icon = 'fa:battery-2'
+    if 50 < battery_data < 75:
+        self.label_15.icon = 'fa:battery-3'
+    if 75 < battery_data < 100:
+        self.label_15.icon = 'fa:battery-4'
+    if battery_data == 0:
+        self.label_15.icon = 'fa:battery-empty' 
+
+    # Home Power Usage
+    home_usage = anvil.server.call('get_home_usage')
+    self.label_22.text = (f'{home_usage} Watts')
     pass
