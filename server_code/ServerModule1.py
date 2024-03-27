@@ -160,6 +160,14 @@ def get_battery_level():
     df_battery_level = get_last_entry_as_dataframe('solarplatform.db', 'myspm')
     battery_level = df_battery_level.loc[0,'SP_Battery_Percent']
     return battery_level
+
+@anvil.server.callable
+def get_home_usage():
+    new_directory = 'Desktop/SPMP/Database'
+    os.chdir(new_directory)
+    df_home_usage = get_last_entry_as_dataframe('solarplatform.db', 'myspm')
+    home_usage = df_home_usage.loc[0,'Home_Watt']
+    return home_usage
     
 @anvil.server.callable
 def get_tariff_analysis():
