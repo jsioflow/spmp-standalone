@@ -18,6 +18,17 @@ def display_parameters(dict):
 class Settings(SettingsTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
+    
+    # Construct a list of items
+    self.drop_down_1.items = []
+    dropdown_options = anvil.server.call('get_dropdown_options')
+    # Make the new lists live in the UI
+    for options in dropdown_options:
+        self.drop_down_1.items.append(options)
+    self.drop_down_1.items = self.drop_down_1.items
+    for options in dropdown_options:
+        self.drop_down_2.items.append(options)
+    self.drop_down_2.items = self.drop_down_2.items
 
   def link_1_click(self, **event_args):
     """This method is called when the link is clicked"""
@@ -51,6 +62,9 @@ class Settings(SettingsTemplate):
     self.text_box_16.text = config_file.get("api_key")
     self.text_box_17.text = config_file.get("timer")
     self.text_box_18.text = config_file.get("co2")
+    self.drop_down_1.selected_value = config_file.get("base_tariff")
+    self.drop_down_2.selected_value = config_file.get("active_tariff")
+    self.text_box_19.text = config_file.get("grid_sell_unit_price")
     pass
 
   def outlined_button_2_click(self, **event_args):
@@ -74,6 +88,9 @@ class Settings(SettingsTemplate):
     record_parameter(parameter_dict, "api_key", self.text_box_16.text)
     record_parameter(parameter_dict, "timer", self.text_box_17.text)
     record_parameter(parameter_dict, "co2", self.text_box_18.text)
+    record_parameter(parameter_dict, "base_tariff", self.drop_down_1.selected_value)
+    record_parameter(parameter_dict, "active_tariff", self.drop_down_2.selected_value)
+    record_parameter(parameter_dict, "grid_sell_unit_price", self.text_box_19.text)
     display_parameters(parameter_dict)
     anvil.server.call('save_configuration', parameter_dict)
     pass
@@ -85,19 +102,11 @@ class Settings(SettingsTemplate):
 
   def drop_down_1_change(self, **event_args):
     """This method is called when an item is selected"""
+    
     pass
 
   def drop_down_2_change(self, **event_args):
     """This method is called when an item is selected"""
     pass
-
-# Construct a list of items
-self.drop_down_1.items = []
-for lunch in ['burger', 'burrito', 'bolognese']:
-  self.drop_down_1.items.append(lunch)
-
-# Make the new list live in the UI
-self.drop_down_1.items = self.drop_down_1.items
-   
     
 

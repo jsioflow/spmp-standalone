@@ -4,7 +4,7 @@ container:
   properties: {html: '@theme:standard-page.html'}
 components:
 - type: ColumnPanel
-  properties: {col_widths: '{"UPWCYS":30,"BGLNPQ":30}'}
+  properties: {col_widths: '{"UPWCYS":30,"BGLNPQ":30,"LRYHOE":40,"MEOEMY":10,"IRBSQU":10}'}
   name: content_panel
   layout_properties: {slot: default}
   components:
@@ -185,6 +185,14 @@ components:
     type: DropDown
     layout_properties: {grid_position: 'FBHYSD,LRYHOE'}
     event_bindings: {change: drop_down_2_change}
+  - name: label_26
+    properties: {text: Sell to Grid Tariff}
+    type: Label
+    layout_properties: {grid_position: 'FBHYSD,MEOEMY'}
+  - name: text_box_19
+    properties: {}
+    type: TextBox
+    layout_properties: {grid_position: 'FBHYSD,IRBSQU'}
   - name: spacer_4
     properties: {height: '3'}
     type: Spacer
