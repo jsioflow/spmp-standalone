@@ -30,6 +30,7 @@ class Tariff_Analysis(Tariff_AnalysisTemplate):
   def link_1_click(self, **event_args):
     """This method is called when the link is clicked"""
     open_form("Home_Page")
+    
     pass
 
   def outlined_button_1_click(self, **event_args):
