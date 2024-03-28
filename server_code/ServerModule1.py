@@ -10,6 +10,7 @@ import csv
 import sqlite3
 import pandas as pd
 import numpy as np
+from . import Globals
 
 
 def read_csv_to_dict(file_path):

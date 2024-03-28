@@ -5,6 +5,7 @@ import anvil.users
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+from . import Globals
 
 class Tariff_Analysis(Tariff_AnalysisTemplate):
   def __init__(self, **properties):
