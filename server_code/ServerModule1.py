@@ -169,7 +169,7 @@ def get_home_usage():
     return home_usage
     
 @anvil.server.callable
-def get_tariff_analysis():
+def get_tariff_analysis(days):
     new_directory = 'Desktop/SPMP/Tariffs'
     os.chdir(new_directory)
     # Read tariff information from CSV files
@@ -180,7 +180,7 @@ def get_tariff_analysis():
     os.chdir(new_directory)
     hourly_database = 'solarplatformhourly.db'
     hourly_table = 'mysphourly'
-    hourly_table = read_table_into_dataframe(hourly_database, hourly_table)
+    hourly_table = read_table_into_dataframe_days(hourly_database, hourly_table, days)
     
     # Count the number of rows per date and filter out those with counts < 24
     filtered_dates = hourly_table.groupby('Date').filter(lambda x: len(x) >= 24)
@@ -225,9 +225,6 @@ def get_tariff_analysis():
         # Calculate the tariff cost and update dfChargeMatrix
         dfChargeMatrix[tariffoption] = (dfChargeMatrix['Grid_Buy_kWh'] * dfChargeMatrix[tariffoption + '_Rate']) / 100
 
-    # Day Count for Summary Statement
-    daysevaluated = np.floor(x/24)
-
     ## Reformat the Charge Matrix ##
     df_summary = pd.DataFrame(columns=['Tariff Plan','Total Cost'])
 
@@ -245,10 +242,6 @@ def get_tariff_analysis():
     for x in range(0, len(df_summary)):
         df_summary.loc[x,'Total Cost'] = '€'+str(df_summary.loc[x,'Total Cost'])
 
-    # Add the total number of days evaluated to the summary DataFrame
-    df_summary.loc[x+2,'Tariff Plan'] = 'Total Number of days Evaluated'
-    df_summary.loc[x+2,'Total Cost'] = str(daysevaluated) + ' Days'
-
     # Reset the index of dfSummary
     df_summary = df_summary.reset_index(inplace=False)
     del df_summary['index']
@@ -256,13 +249,37 @@ def get_tariff_analysis():
     df_summary.reset_index(drop=True, inplace=True)
     df_summary.index += 1
 
-    #global winner
     winner = df_summary.iloc[[0]].to_string(header=False, index=False)
     best_tariff = get_before_last_space(winner)
     best_cost = get_after_last_space(winner)
-
+    
     winner = (f'The Best Tariff is the "{best_tariff}" at a Cost of {best_cost}')
     #print(winner)
     #print(df_summary)
     #print("Transaction Completed at: ",current_time)
-    return winner
+    return winner, df_summary.to_markdown()
+
+@anvil.server.callable
+def get_days_analysis():
+    new_directory = 'Desktop/SPMP/Tariffs'
+    os.chdir(new_directory)
+    # Read tariff information from CSV files
+    df_tariffs = pd.read_csv('utility_plans.csv')
+    
+    os.chdir("..")
+    new_directory = 'Database'
+    os.chdir(new_directory)
+    hourly_database = 'solarplatformhourly.db'
+    hourly_table = 'mysphourly'
+    hourly_table = read_table_into_dataframe(hourly_database, hourly_table)
+    
+    # Count the number of rows per date and filter out those with counts < 24
+    filtered_dates = hourly_table.groupby('Date').filter(lambda x: len(x) >= 24)
+
+    # Reset the index of df2
+    filtered_dates = filtered_dates.reset_index(drop=True)
+    dfChargeMatrix = filtered_dates
+    days = (len(dfChargeMatrix)/24) - 3
+    if days < 0:
+        days = 0
+    return days
