@@ -312,3 +312,14 @@ def get_dropdown_options():
         list1.append(column)
     list1 = list1[2:]
     return list1
+    
+@anvil.server.callable
+def get_active_tariff():    
+    # Database, File, Paths and Table Locations
+    db_file_path = '/home/johnstone/Desktop/SPMP/Database/'
+    os.chdir(db_file_path)
+    configuration_file = db_file_path + 'config_parameters.csv'
+    # Parameter Definitions
+    configuration = read_csv_to_dict(configuration_file)
+    active_tariff = pick_parameter_value(configuration, 'active_tariff')
+    return active_tariff

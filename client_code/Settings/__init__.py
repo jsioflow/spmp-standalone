@@ -29,6 +29,29 @@ class Settings(SettingsTemplate):
     for options in dropdown_options:
         self.drop_down_2.items.append(options)
     self.drop_down_2.items = self.drop_down_2.items
+    
+    config_file = anvil.server.call('get_config_file')
+    self.text_box_1.text = config_file.get('ip_address')
+    self.text_box_2.text = config_file.get('customer_id')
+    self.text_box_3.text = config_file.get('max_battery_capacity')
+    self.text_box_4.text = config_file.get('location_region')
+    self.text_box_5.text = config_file.get('location_name')
+    self.text_box_6.text = config_file.get('timezone')
+    self.text_box_7.text = config_file.get('battery_max_level')
+    self.text_box_8.text = config_file.get('latitude')
+    self.text_box_9.text = config_file.get('longitude')
+    self.text_box_10.text = config_file.get('max_charge_w')
+    self.text_box_11.text = config_file.get('forecast_source')
+    self.text_box_12.text = config_file.get('sp_kWh_default')
+    self.text_box_13.text = config_file.get('host')
+    self.text_box_14.text = config_file.get('home_kWh_default')
+    self.text_box_15.text = config_file.get('resource_id')
+    self.text_box_16.text = config_file.get("api_key")
+    self.text_box_17.text = config_file.get("timer")
+    self.text_box_18.text = config_file.get("co2")
+    self.drop_down_1.selected_value = config_file.get("base_tariff")
+    self.drop_down_2.selected_value = config_file.get("active_tariff")
+    self.text_box_19.text = config_file.get("grid_sell_unit_price")
 
   def link_1_click(self, **event_args):
     """This method is called when the link is clicked"""
@@ -107,5 +130,4 @@ class Settings(SettingsTemplate):
   def drop_down_2_change(self, **event_args):
     """This method is called when an item is selected"""
     pass
-    
 
