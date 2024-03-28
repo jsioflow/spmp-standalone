@@ -173,8 +173,7 @@ components:
     type: DropDown
     layout_properties: {grid_position: 'ILYQPY,VNBKCE'}
     event_bindings: {change: drop_down_1_change}
-    data_bindings:
-    - {property: items, code: 'self.item['''']', writeback: false}
+    data_bindings: []
   - name: label_25
     properties: {text: Active Customer Tariff}
     type: Label
