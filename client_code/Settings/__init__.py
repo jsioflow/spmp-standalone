@@ -91,6 +91,13 @@ class Settings(SettingsTemplate):
     """This method is called when an item is selected"""
     pass
 
+# Construct a list of items
+self.drop_down_1.items = []
+for lunch in ['burger', 'burrito', 'bolognese']:
+  self.drop_down_1.items.append(lunch)
+
+# Make the new list live in the UI
+self.drop_down_1.items = self.drop_down_1.items
    
     
 
