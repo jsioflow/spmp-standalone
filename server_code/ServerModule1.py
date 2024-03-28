@@ -299,3 +299,16 @@ def get_days_analysis():
     if days < 0:
         days = 0
     return days
+
+@anvil.server.callable
+def get_dropdown_options():
+    new_directory = 'Desktop/SPMP/Tariffs'
+    os.chdir(new_directory)
+    # Read tariff information from CSV files
+    df_tariffs = pd.read_csv('utility_plans.csv')
+    # Read list of Tariff options form file and populate the Charge Matrix
+    list1 = []
+    for column in df_tariffs.columns:
+        list1.append(column)
+    list1 = list1[2:]
+    return list1

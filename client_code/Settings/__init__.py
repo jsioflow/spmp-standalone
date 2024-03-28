@@ -102,7 +102,6 @@ class Settings(SettingsTemplate):
 
   def drop_down_1_change(self, **event_args):
     """This method is called when an item is selected"""
-    
     pass
 
   def drop_down_2_change(self, **event_args):
