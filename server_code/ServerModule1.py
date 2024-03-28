@@ -89,6 +89,22 @@ def read_table_into_dataframe(db_file, table_name):
     conn.close()
 
     return dataframe
+
+def read_table_into_dataframe_days(db_file, table_name, days):
+    # Connect to SQLite database
+    conn = sqlite3.connect(db_file)
+    hours = days * 24
+
+    # Build SQL query to select all rows from the specified table
+    select_query = f"SELECT * FROM {table_name} ORDER BY Date DESC LIMIT {hours}"
+
+    # Execute the query and fetch the results as a DataFrame
+    dataframe = pd.read_sql_query(select_query, conn)
+
+    # Close the connection
+    conn.close()
+
+    return dataframe
     
 def get_after_last_space(input_string):
     # Find the index of the last space in the string
