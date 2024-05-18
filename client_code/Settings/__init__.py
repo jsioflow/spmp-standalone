@@ -49,9 +49,10 @@ class Settings(SettingsTemplate):
     self.text_box_16.text = config_file.get("api_key")
     self.text_box_17.text = config_file.get("timer")
     self.text_box_18.text = config_file.get("co2")
+    self.text_box_19.text = config_file.get("grid_sell_unit_price")
+    self.text_box_20.text = config_file.get("platform_api_key")
     self.drop_down_1.selected_value = config_file.get("base_tariff")
     self.drop_down_2.selected_value = config_file.get("active_tariff")
-    self.text_box_19.text = config_file.get("grid_sell_unit_price")
 
   def link_1_click(self, **event_args):
     """This method is called when the link is clicked"""
@@ -85,9 +86,10 @@ class Settings(SettingsTemplate):
     self.text_box_16.text = config_file.get("api_key")
     self.text_box_17.text = config_file.get("timer")
     self.text_box_18.text = config_file.get("co2")
+    self.text_box_19.text = config_file.get("grid_sell_unit_price")
+    self.text_box_20.text = config_file.get("platform_api_key")
     self.drop_down_1.selected_value = config_file.get("base_tariff")
     self.drop_down_2.selected_value = config_file.get("active_tariff")
-    self.text_box_19.text = config_file.get("grid_sell_unit_price")
     pass
 
   def outlined_button_2_click(self, **event_args):
@@ -114,6 +116,7 @@ class Settings(SettingsTemplate):
     record_parameter(parameter_dict, "base_tariff", self.drop_down_1.selected_value)
     record_parameter(parameter_dict, "active_tariff", self.drop_down_2.selected_value)
     record_parameter(parameter_dict, "grid_sell_unit_price", self.text_box_19.text)
+    record_parameter(parameter_dict, "platform_api_key", self.text_box_20.text)
     display_parameters(parameter_dict)
     anvil.server.call('save_configuration', parameter_dict)
     pass
